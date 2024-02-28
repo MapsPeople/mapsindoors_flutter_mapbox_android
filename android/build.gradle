@@ -93,6 +93,6 @@ dependencies {
     implementation ("com.mapbox.maps:android:10.14.1") {
         exclude group: 'com.mapbox.plugin', module: 'maps-lifecycle'
     }
-    implementation "com.mapspeople.mapsindoors:mapbox:4.2.12-flutter"
+    implementation "com.mapspeople.mapsindoors:mapbox:4.3.4-flutter"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.3.0"
 }
