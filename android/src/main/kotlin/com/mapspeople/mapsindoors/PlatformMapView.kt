@@ -22,7 +22,7 @@ abstract class PlatformMapView(private val context: Context) : PlatformMapViewIn
     init {
         mMapboxMap = mMap.getMapboxMap()
         mMapboxMap?.loadStyleUri(Style.MAPBOX_STREETS)
-
+        whenMapReady()
     }
 
     @SuppressLint("Lifecycle")
@@ -51,25 +51,23 @@ abstract class PlatformMapView(private val context: Context) : PlatformMapViewIn
             } else if (duration != null) {
                 mMapboxMap?.flyTo(it, MapAnimationOptions.mapAnimationOptions {
                     duration(duration.toLong())
-                    animatorListener(object : Animator.AnimatorListener {
-                        override fun onAnimationStart(animation: Animator) {
-                            /* Do nothing */
-                        }
+                }, object : Animator.AnimatorListener {
+                override fun onAnimationStart(animation: Animator) {
+                    /* Do nothing */
+                }
 
-                        override fun onAnimationEnd(animation: Animator) {
-                            success()
-                        }
+                override fun onAnimationEnd(animation: Animator) {
+                    success()
+                }
 
-                        override fun onAnimationCancel(animation: Animator) {
-                            success()
-                        }
+                override fun onAnimationCancel(animation: Animator) {
+                    success()
+                }
 
-                        override fun onAnimationRepeat(animation: Animator) {
-                            /* Do nothing */
-                        }
-
-                    })
-                })
+                override fun onAnimationRepeat(animation: Animator) {
+                    /* Do nothing */
+                }
+            })
             } else {
                 mMapboxMap?.flyTo(it)
                 success()

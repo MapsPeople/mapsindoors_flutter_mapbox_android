@@ -15,6 +15,7 @@ import com.mapbox.maps.MapView
 import com.mapbox.maps.MapboxMap
 import com.mapsindoors.core.MPFloorSelectorInterface
 import com.mapsindoors.core.MPPoint
+import com.mapsindoors.core.MPSelectionMode
 import com.mapsindoors.mapbox.MPMapConfig
 import com.mapsindoors.mapbox.converters.toPoint
 import com.mapspeople.mapsindoors.core.models.*
@@ -98,6 +99,12 @@ fun MapConfig.makeMPMapConfig(context: Context, map: MapboxMap, mapView: MapView
     }
     floorSelector?.let {
         builder.setFloorSelector(it)
+    }
+    buildingSelectionMode?.let {
+        builder.setBuildingSelectionMode(MPSelectionMode.values()[it])
+    }
+    floorSelectionMode?.let {
+        builder.setFloorSelectionMode(MPSelectionMode.values()[it])
     }
     return builder.build()
 }

@@ -2,7 +2,7 @@ group 'com.mapspeople.mapsindoors'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '1.6.10'
+    ext.kotlin_version = '1.8.22'
     repositories {
         maven { url uri("${projectDir}/libs") }
         google()
@@ -42,7 +42,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 34
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -90,9 +90,10 @@ dependencies {
         }
     }
 
-    implementation ("com.mapbox.maps:android:10.14.1") {
+    implementation ("com.mapbox.maps:android:11.3.0") {
         exclude group: 'com.mapbox.plugin', module: 'maps-lifecycle'
     }
-    implementation "com.mapspeople.mapsindoors:mapbox:4.4.1-flutter"
+    implementation "com.mapspeople.mapsindoors:mapbox-flutter:4.8.5"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.3.0"
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
 }
