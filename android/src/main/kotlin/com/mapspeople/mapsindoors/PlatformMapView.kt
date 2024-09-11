@@ -10,6 +10,7 @@ import android.view.View
 import com.mapbox.maps.MapView
 import com.mapbox.maps.MapboxMap
 import com.mapbox.maps.Style
+import com.mapbox.maps.plugin.attribution.attribution
 import com.mapbox.maps.plugin.animation.MapAnimationOptions
 import com.mapbox.maps.plugin.animation.flyTo
 import com.mapspeople.mapsindoors.core.*
@@ -21,7 +22,10 @@ abstract class PlatformMapView(private val context: Context) : PlatformMapViewIn
 
     init {
         mMapboxMap = mMap.getMapboxMap()
-        mMapboxMap?.loadStyleUri(Style.MAPBOX_STREETS)
+        //TODO: This solution is temporary until we find a way to make the attribution view compatible with Flutter
+        mMap?.attribution?.updateSettings {
+            this.enabled = false
+        }
         whenMapReady()
     }
 
