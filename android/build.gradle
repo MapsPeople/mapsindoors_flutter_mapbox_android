@@ -42,6 +42,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
+    namespace = "com.mapspeople.mapsindoors"
     compileSdkVersion 34
 
     compileOptions {
@@ -90,7 +91,7 @@ dependencies {
         }
     }
 
-    implementation ("com.mapbox.maps:android:11.3.0") {
+    implementation ("com.mapbox.maps:android:11.7.1") {
         exclude group: 'com.mapbox.plugin', module: 'maps-lifecycle'
     }
     implementation "com.mapspeople.mapsindoors:mapbox-flutter:4.8.9"
