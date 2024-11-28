@@ -5,22 +5,28 @@ import android.annotation.SuppressLint
 import android.content.Context
 import com.mapsindoors.core.MPFloorSelectorInterface
 import com.mapsindoors.mapbox.MPMapConfig
-
+import com.google.gson.Gson
 import android.view.View
 import com.mapbox.maps.MapView
 import com.mapbox.maps.MapboxMap
 import com.mapbox.maps.Style
+import com.mapbox.maps.toCameraOptions
+import com.mapbox.maps.MapInitOptions
 import com.mapbox.maps.plugin.attribution.attribution
 import com.mapbox.maps.plugin.animation.MapAnimationOptions
 import com.mapbox.maps.plugin.animation.flyTo
 import com.mapspeople.mapsindoors.core.*
 import com.mapspeople.mapsindoors.core.models.*
 
-abstract class PlatformMapView(private val context: Context) : PlatformMapViewInterface {
-    private val mMap: MapView = MapView(context)
+abstract class PlatformMapView(private val context: Context, private val args: HashMap<*,*>?) : PlatformMapViewInterface {
+    private val mMap: MapView
     private var mMapboxMap: MapboxMap? = null
 
     init {
+        val options = Gson().fromJson(args?.get("initialCameraPosition") as? String, CameraPosition::class.java)?.toCameraState()?.toCameraOptions()
+
+        mMap = MapView(context, MapInitOptions(context, cameraOptions = options))
+
         mMapboxMap = mMap.getMapboxMap()
         mMapboxMap?.loadStyleUri(Style.MAPBOX_STREETS)
         //TODO: This solution is temporary until we find a way to make the attribution view compatible with Flutter
