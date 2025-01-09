@@ -61,6 +61,19 @@ android {
     defaultConfig {
         minSdkVersion 21
     }
+
+    buildTypes {
+        release {
+            postprocessing {
+                removeUnusedCode true
+                obfuscate false
+                optimizeCode true
+            }
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
 }
 
 configurations {

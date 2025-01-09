@@ -78,6 +78,10 @@ fun CameraUpdate.toCameraOptions(map: MapboxMap) : CameraOptions = when (mode) {
 fun MapConfig.makeMPMapConfig(context: Context, map: MapboxMap, mapView: MapView, apiKey: String, floorSelector: MPFloorSelectorInterface?) : MPMapConfig {
     val builder = MPMapConfig.Builder(context, map, mapView, apiKey, useDefaultMapsIndoorsStyle)
 
+    mapStyleUri?.let {
+        map.loadStyle(it)
+    }
+
     typeface?.let {
         val tf = Typeface.create(it, Typeface.NORMAL)
         builder.setMapLabelFont(tf, color!!, showHalo!!)
@@ -105,6 +109,9 @@ fun MapConfig.makeMPMapConfig(context: Context, map: MapboxMap, mapView: MapView
     }
     floorSelectionMode?.let {
         builder.setFloorSelectionMode(MPSelectionMode.values()[it])
+    }
+    mapsindoorsTransitionLevel?.let {
+        builder.setMapsIndoorsTransitionLevel(it)
     }
     return builder.build()
 }

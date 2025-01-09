@@ -28,7 +28,7 @@ abstract class PlatformMapView(private val context: Context, private val args: H
         mMap = MapView(context, MapInitOptions(context, cameraOptions = options))
 
         mMapboxMap = mMap.getMapboxMap()
-        mMapboxMap?.loadStyleUri(Style.MAPBOX_STREETS)
+        mMapboxMap?.loadStyle(Style.MAPBOX_STREETS)
         //TODO: This solution is temporary until we find a way to make the attribution view compatible with Flutter
         mMap?.attribution?.updateSettings {
             this.enabled = false
