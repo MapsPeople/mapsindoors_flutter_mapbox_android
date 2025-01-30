@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.1.2
+See the [main](https://pub.dev/packages/mapsindoors_mapbox/changelog) package for the changelog.
+
+## 4.1.1
+* Fixed build issue
+
 ## 4.1.0
 See the [main](https://pub.dev/packages/mapsindoors_mapbox/changelog) package for the changelog.
 

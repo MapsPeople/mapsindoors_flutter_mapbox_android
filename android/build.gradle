@@ -62,18 +62,6 @@ android {
         minSdkVersion 21
     }
 
-    buildTypes {
-        release {
-            postprocessing {
-                removeUnusedCode true
-                obfuscate false
-                optimizeCode true
-            }
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-
-
 }
 
 configurations {
@@ -107,7 +95,7 @@ dependencies {
     implementation ("com.mapbox.maps:android:11.7.1") {
         exclude group: 'com.mapbox.plugin', module: 'maps-lifecycle'
     }
-    implementation "com.mapspeople.mapsindoors:mapbox-flutter:4.9.1"
+    implementation "com.mapspeople.mapsindoors:mapbox-flutter:4.10.1"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.3.0"
     implementation 'com.github.bumptech.glide:glide:4.16.0'
 }
