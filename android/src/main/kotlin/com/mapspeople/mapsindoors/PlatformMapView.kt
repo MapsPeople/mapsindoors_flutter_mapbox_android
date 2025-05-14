@@ -15,6 +15,7 @@ import com.mapbox.maps.MapInitOptions
 import com.mapbox.maps.plugin.attribution.attribution
 import com.mapbox.maps.plugin.animation.MapAnimationOptions
 import com.mapbox.maps.plugin.animation.flyTo
+import com.mapbox.maps.plugin.compass.compass
 import com.mapspeople.mapsindoors.core.*
 import com.mapspeople.mapsindoors.core.models.*
 
@@ -29,10 +30,6 @@ abstract class PlatformMapView(private val context: Context, private val args: H
 
         mMapboxMap = mMap.getMapboxMap()
         mMapboxMap?.loadStyle(Style.MAPBOX_STREETS)
-        //TODO: This solution is temporary until we find a way to make the attribution view compatible with Flutter
-        mMap?.attribution?.updateSettings {
-            this.enabled = false
-        }
         whenMapReady()
     }
 
@@ -44,6 +41,16 @@ abstract class PlatformMapView(private val context: Context, private val args: H
 
     override fun getMapView(): View {
         return mMap
+    }
+
+    override fun showCompass(show: Boolean) {
+        mMap.getMapboxMap().getStyle { style ->
+            if (style != null) {
+                mMap.compass.updateSettings {
+                    enabled = show
+                }
+            }
+        }
     }
 
     override fun makeMPConfig(config: MapConfig?, floorSelectorInterface: MPFloorSelectorInterface) : MPMapConfig? {
