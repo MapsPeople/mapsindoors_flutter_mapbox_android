@@ -58,7 +58,14 @@ abstract class PlatformMapView(private val context: Context, private val args: H
     }
 
     override val currentCameraPosition: CameraPosition? get() {
-        return mMapboxMap?.cameraState?.toCameraPosition()
+        return mMapboxMap?.cameraState?.toCameraPosition()?.let {
+            CameraPosition(
+                zoom = it.zoom!! + 1, // Mapbox zoom is 0-based, MapsIndoors is 1-based
+                tilt = it.tilt,
+                bearing = it.bearing,
+                target = it.target
+            )
+        }
     }
 
     override fun updateCamera(move: Boolean, update: CameraUpdate, duration: Int?, success: () -> Unit) {
