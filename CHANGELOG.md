@@ -1,7 +1,10 @@
 # Changelog
 
+## 4.3.0
+See the [main](https://pub.dev/packages/mapsindoors_mapbox/changelog) package for the changelog.
+
 ## 4.2.5
-See the [main](https://pub.dev/packages/mapsindoors_googlemaps/changelog) package for the changelog.
+See the [main](https://pub.dev/packages/mapsindoors_mapbox/changelog) package for the changelog.
 
 ## 4.2.4
 See the [main](https://pub.dev/packages/mapsindoors_mapbox/changelog) package for the changelog.
