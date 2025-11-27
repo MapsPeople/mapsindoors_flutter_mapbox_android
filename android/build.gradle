@@ -49,6 +49,7 @@ android {
         minSdkVersion 21
 
         proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+        consumerProguardFiles("proguard-consumer-rules.pro")
     }
 
 }
@@ -81,10 +82,10 @@ dependencies {
         }
     }
 
-    implementation ("com.mapbox.maps:android-ndk27:11.15.3") {
+    implementation ("com.mapbox.maps:android-ndk27:11.16.6") {
         exclude group: 'com.mapbox.plugin', module: 'maps-lifecycle-ndk27'
     }
-    implementation "com.mapspeople.mapsindoors:mapbox-flutter:4.15.5"
+    implementation "com.mapspeople.mapsindoors:mapbox-flutter:4.16.0"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.3.0"
     implementation 'com.github.bumptech.glide:glide:5.0.5'
 }
